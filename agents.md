@@ -4,21 +4,31 @@ This file provides instructions and context for AI coding assistants working on 
 
 ## Project Overview
 
-<!-- Describe your project here -->
-- **Project Name**: [Project Name]
-- **Description**: [Brief description of what the project does]
-- **Tech Stack**: [List main technologies, frameworks, and languages]
+- **Project Name**: ContentClay
+- **Description**: Automated social media content generation platform that creates and posts daily content across LinkedIn, X.com (Twitter), and Instagram. The system pulls topics from a Notion content calendar and uses AI to generate brand-consistent content, then automatically posts to social media platforms.
+- **Tech Stack**: [To be filled - e.g., Node.js/TypeScript, Python, etc.]
+
+### Key Features
+- **Multi-platform posting**: LinkedIn, X.com, Instagram
+- **Content calendar integration**: Notion-based topic management
+- **AI-powered content generation**: Brand voice consistency
+- **Automated scheduling**: Daily content creation and posting
 
 ## Project Structure
 
 <!-- Update this section to reflect your actual project structure -->
 ```
 project-root/
-├── src/           # Source code
-├── tests/         # Test files
-├── docs/          # Documentation
-├── config/        # Configuration files
-└── scripts/       # Build and utility scripts
+├── src/                    # Source code
+│   ├── platforms/          # Platform-specific integrations (LinkedIn, X, Instagram)
+│   ├── content/            # Content generation logic
+│   ├── notion/             # Notion API integration
+│   ├── ai/                 # AI/LLM integrations for content generation
+│   └── scheduler/          # Job scheduling and automation
+├── tests/                  # Test files
+├── docs/                   # Documentation
+├── config/                 # Configuration files
+└── scripts/                # Build and utility scripts
 ```
 
 ## Coding Standards
@@ -109,20 +119,28 @@ Most AI coding assistants will recognize and use this file when present in the p
 
 ## Customization
 
-### Adding Project-Specific Instructions
-Add sections below for project-specific guidelines:
+### Platform Integration Guidelines
+- Each social platform (LinkedIn, X.com, Instagram) should have its own module under `src/platforms/`
+- Platform modules should implement a common interface for consistent behavior
+- Handle platform-specific rate limits and API constraints gracefully
+- Store credentials securely using environment variables or a secrets manager
 
-<!-- Example custom sections:
-### API Guidelines
-- REST API endpoints should follow our naming conventions
-- All endpoints must have proper authentication
-- Return appropriate HTTP status codes
+### Content Generation Guidelines
+- AI-generated content must maintain brand voice consistency
+- Include appropriate hashtags and mentions per platform best practices
+- Support content templates for different post types (educational, promotional, engagement)
+- Implement content review/approval workflows before posting
 
-### Database Guidelines
-- Use migrations for schema changes
-- Index frequently queried columns
-- Follow naming conventions for tables and columns
--->
+### Notion Integration Guidelines
+- Use the Notion API to read topics from the content calendar
+- Support marking topics as processed after content is generated
+- Handle sync errors and conflicts gracefully
+
+### Security Considerations
+- Never hardcode API keys or access tokens
+- Use OAuth flows for platform authentication where available
+- Implement proper token refresh mechanisms
+- Log all posting activities for audit purposes
 
 ### Environment Setup
 <!-- Add setup instructions for new developers/AI assistants -->
